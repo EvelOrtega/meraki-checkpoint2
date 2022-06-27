@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tela de login" />
+    <title>Meraki - Login</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row d-flex justify-content-center mt-5">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card py-3 px-2">
+            <h2 class="text-center mb-3 mt-2">Cadastro</h2>
+            <div class="row mx-auto">
+              <div class="col-4"></div>
+              <div class="col-4"></div>
+              <div class="col-4"></div>
+            </div>
+            <div class="division">
+              <div class="row"></div>
+            </div>
+            <form class="myform">
+              <div class="form-group">
+                <input id="nome" required type="text" class="form-control" placeholder="nome" />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="sobrenome"
+                  id="sobrenome"
+                  required
+                />
+                <div class="form-group">
+                  <select id="genero" name="genero">
+                    <option value="masculino">masculino</option>
+                    <option value="feminino" selected>feminino</option>
+                    <option value="outro">outro</option>
+                  </select>
+                  <label for="genero">selecione seu genero</label>
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="cpf"
+                  maxlength="11"
+                  oninput="mascaraCPF(this)"
+                  required
+                  id="cpf"
+                />
+                <div class="form-group">
+                  <label for="dataDeNascimento">data de nascimento</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="dataDeNascimento"
+                    required
+                  />
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="email"
+                    required
+                    id="email"
+                  />
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="senha"
+                    required
+                    id="senha"
+                  />
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="rua"
+                    required
+                    id="rua"
+                  />
+                <div class="form-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="numero"
+                  maxlength="4"
+                  required
+                  id="numero"
+                />  
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="complemento"
+                    required
+                    id="complemento"
+                  />
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="cep"
+                    oninput="mascaraCep(this)"
+                    required
+                    id="cep"
+                  />
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="cidade"
+                    required
+                    id="cidade"
+                  />
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="estado"
+                    required
+                    id="estado"
+                  />
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="pais"
+                    required
+                    id="pais"
+                  />
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="telefone"
+                    oninput="mascaraTel(this)"
+                    required
+                    id="telefone"
+                  />
+              <div class="row">
+                <div class="col-md-12 col-12">
+                  <div class="form-group form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="exampleCheck1"
+                      required
+                    />
+                    <label class="form-check-label" for="exampleCheck1"
+                      >Confirmo que li os termos de uso.
+                      <a href="#">Termos de uso</a>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <a href="#"
+                  ><button
+                  id="btnLogin"
+                    type="button"
+                    class="btn btn-block btn-primary btn-lg"
+                    
+                  >
+                    <small><i class="far fa-user pr-2"></i>Entrar</small>
+                  </button></a
+                >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      body {
+        background-color: #19123b;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='341' height='341' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23232375' stroke-width='1.3'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%231F189E'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+        background-attachment: fixed;
+      }
+      .card {
+        border: none;
+        border-top: 3px solid rgba(78, 58, 167, 0.438);
+        background: #212042;
+        color: azure;
+      }
+      p {
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .fab {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: #2a284d;
+        height: 40px;
+        width: 90px;
+      }
+      .fab:hover {
+        cursor: pointer;
+      }
+      .fa-twitter {
+        color: #56abec;
+      }
+      .fa-facebook {
+        color: #1775f1;
+      }
+      .fa-google {
+        color: #cb5048;
+      }
+      .division {
+        float: none;
+        position: relative;
+        margin: 30px auto 20px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .division .line {
+        border-top: 1.5px solid azure;
+        position: absolute;
+        top: 13px;
+        width: 85%;
+      }
+      .line.l {
+        left: 52px;
+      }
+      .line.r {
+        right: 45px;
+      }
+      .division span {
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .myform {
+        padding: 0 25px 0 33px;
+      }
+      .form-control {
+        border: 1px solid azure;
+        border-radius: 3px;
+        background: #212042;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+      }
+      .form-control:focus {
+        border: 1px solid azure;
+        border-radius: 3px;
+        box-shadow: none;
+        background: #212042;
+        color: #fff;
+        letter-spacing: 1px;
+      }
+      .bn {
+        text-decoration: underline;
+      }
+      .bn:hover {
+        cursor: pointer;
+      }
+      .form-check-input {
+        margin-top: 8px !important;
+      }
+      .btn-primary {
+        background-color: rgba(78, 58, 167, 1);
+        border: none;
+        border-radius: 50px;
+      }
+      .btn-primary:focus {
+        box-shadow: none;
+        border: none;
+      }
+      small {
+        color: #f2ceff;
+      }
+      .far.fa-user {
+        font-size: 13px;
+      }
+
+      @media (min-width: 767px) {
+        .bn {
+          text-align: right;
+        }
+      }
+      @media (max-width: 767px) {
+        .form-check {
+          text-align: center;
+        }
+        .bn {
+          text-align: center;
+          align-items: center;
+        }
+      }
+      @media (max-width: 450px) {
+        .fab {
+          width: 100%;
+          height: 100%;
+        }
+        .division .line {
+          width: 50%;
+        }
+      }
+    </style>
+    <script>
+    function mascaraCPF(i){
+   
+      var v = i.value;
+      
+      if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+         i.value = v.substring(0, v.length-1);
+         return;
+      }
+      
+      i.setAttribute("maxlength", "14");
+      if (v.length == 3 || v.length == 7) i.value += ".";
+      if (v.length == 11) i.value += "-";
+    }
+    function mascaraCep(i){
+   
+      var v = i.value;
+   
+      if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+      i.value = v.substring(0, v.length-1);
+      return;
+      }
+   
+      i.setAttribute("maxlength", "10");
+      if (v.length == 2 ) i.value += ".";
+      if (v.length == 6) i.value += "-";
+    }
+    function mascaraTel(i){
+   
+     var v = i.value;
+
+     if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+     i.value = v.substring(0, v.length-1);
+     return;
+     }
+
+      i.setAttribute("maxlength", "13");
+      if (v.length == 2 ) i.value += " ";
+      if (v.length == 8) i.value += "-";
+    }
+
+   </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/logon.js"></script>
+  </body>
+</html>
